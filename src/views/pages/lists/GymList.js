@@ -48,7 +48,7 @@ const GymList = () => {
   })
 
   }
-
+console.log(gymlist);
 
   const onLoadDetail = (gymid) => {
     API.post('v1.0/gymcenterdetails/get-gym-center-all-details', { gymcenterid: gymid }).then(res => {
@@ -182,7 +182,7 @@ const GymList = () => {
 
               <>
                 <CTableDataCell><p className='table-items'>{convertfirstletter(items?.center_name)}</p></CTableDataCell>
-                <CTableDataCell><p className='table-items'>{items?.address.substring(0, 25)}</p></CTableDataCell>
+                {/* <CTableDataCell><p className='table-items'>{items?.address.substring(0, 25)}</p></CTableDataCell> */}
                 {/* <CTableDataCell><p className='table-items'>{items?.state}</p></CTableDataCell> */}
                 {/* <CTableDataCell><p className='table-items'>{items?.country}</p></CTableDataCell> */}
                 {/* <CTableDataCell><p className='table-items'>{items?.district}</p></CTableDataCell> */}
