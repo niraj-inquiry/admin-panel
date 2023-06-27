@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // export const baseurl="http://127.0.0.1:8000/"
- export const baseurl = "https://superactive-api.onrender.com/";
+ export const baseurl = "https://gym-api-3r8c.onrender.com/";
 //  export const baseurl="http://10.5.50.213:8000/"
 export const isEmpty = (value) => {
   if (value === undefined || value === null || value?.length === 0) {
