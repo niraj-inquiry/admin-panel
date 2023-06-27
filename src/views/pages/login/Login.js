@@ -28,55 +28,36 @@ const Login = () => {
   const [error, setError] = useState(false)
   const navigate = useNavigate()
   const onLogin = () => {
-    axios.post("",{
-      email: email,
-      password: password,
-    }).then((res)=>{
-      console.log(res)
-      navigate('/dashboard')
-    }).catch((err)=>{
-      alert("Failed to Login")
-    })
-    // if (!isEmpty(email) && !isEmpty(password)) {
-    //   API.post('v1.0/user/login', {
-    //     email: email,
-    //     password: password,
-    //   })
-    //     .then((res) => {
-    //       console.log('const ddddddddddd', res.data)
-    //       if (res.data.status === true) {
-    //         // alert(res.data.message)
-    //         setError(false)
-    //         setEmpty(false)
-    //         localStorage.setItem('userid', res.data.data._id)
-    //         localStorage.setItem("userdata",JSON.stringify(res.data.data))
-    //         localStorage.setItem('token', res.data.token)
-    //         localStorage.setItem('usertype', res.data.usertype)
-    //        if((res.data.usertype).toLowerCase()==='admin'||(res.data.usertype).toLowerCase()==='superadmin')
-    //        {
-    //         navigate('dashboard')
-    //       }
-    //       else{
-    //         alert("Invalid user")
-    //       }
-    //       } else {
-    //         alert(res.data.message)
-    //         setError(true)
-    //         setEmpty(false)
-    //       }
-    //     })
-    //     .catch((e) => {
-    //       console.log('error', e)
-    //       navigate('/')
-    //       alert('Something went wrong')
-    //       setError(true)
-    //       setEmpty(false)
-    //     })
-    // } else {
-    //   setEmpty(true)
-    //   setError(false)
-    //   // alert("Please Enter Email and Password");
-    // }
+    try {
+      const response = await axios.post(
+        "https://gym-api-3r8c.onrender.com/v1.0/user/login",
+        {
+          email: email,
+          password: password,
+        }
+      )
+  
+      const { data } = response;
+      const aData={
+        Uuser:data.data.email, 
+        upass:data.data.password,
+        Uusertype:data.data.user_type
+      }
+      
+      if (data.data.email && data.data.password ) {
+        if (data.data.user_type==="admin") {
+          navigate('/dashboard')
+          localStorage.setItem('userAuth', JSON.stringify(aData) )
+        } else {
+         
+          navigate('/')
+        }
+      }
+      
+    } catch (err) {
+      alert(`Incorrect Authentications`);
+      
+    }
   }
   return (
     <div
