@@ -28,46 +28,55 @@ const Login = () => {
   const [error, setError] = useState(false)
   const navigate = useNavigate()
   const onLogin = () => {
-    if (!isEmpty(email) && !isEmpty(password)) {
-      API.post('v1.0/user/login', {
-        email: email,
-        password: password,
-      })
-        .then((res) => {
-          console.log('const ddddddddddd', res.data)
-          if (res.data.status === true) {
-            // alert(res.data.message)
-            setError(false)
-            setEmpty(false)
-            localStorage.setItem('userid', res.data.data._id)
-            localStorage.setItem("userdata",JSON.stringify(res.data.data))
-            localStorage.setItem('token', res.data.token)
-            localStorage.setItem('usertype', res.data.usertype)
-           if((res.data.usertype).toLowerCase()==='admin'||(res.data.usertype).toLowerCase()==='superadmin')
-           {
-            navigate('dashboard')
-          }
-          else{
-            alert("Invalid user")
-          }
-          } else {
-            alert(res.data.message)
-            setError(true)
-            setEmpty(false)
-          }
-        })
-        .catch((e) => {
-          console.log('error', e)
-          navigate('/')
-          alert('Something went wrong')
-          setError(true)
-          setEmpty(false)
-        })
-    } else {
-      setEmpty(true)
-      setError(false)
-      // alert("Please Enter Email and Password");
-    }
+    axios.post("",{
+      email: email,
+      password: password,
+    }).then((res)=>{
+      console.log(res)
+      navigate('/dashboard')
+    }).catch((err)=>{
+      alert("Failed to Login")
+    })
+    // if (!isEmpty(email) && !isEmpty(password)) {
+    //   API.post('v1.0/user/login', {
+    //     email: email,
+    //     password: password,
+    //   })
+    //     .then((res) => {
+    //       console.log('const ddddddddddd', res.data)
+    //       if (res.data.status === true) {
+    //         // alert(res.data.message)
+    //         setError(false)
+    //         setEmpty(false)
+    //         localStorage.setItem('userid', res.data.data._id)
+    //         localStorage.setItem("userdata",JSON.stringify(res.data.data))
+    //         localStorage.setItem('token', res.data.token)
+    //         localStorage.setItem('usertype', res.data.usertype)
+    //        if((res.data.usertype).toLowerCase()==='admin'||(res.data.usertype).toLowerCase()==='superadmin')
+    //        {
+    //         navigate('dashboard')
+    //       }
+    //       else{
+    //         alert("Invalid user")
+    //       }
+    //       } else {
+    //         alert(res.data.message)
+    //         setError(true)
+    //         setEmpty(false)
+    //       }
+    //     })
+    //     .catch((e) => {
+    //       console.log('error', e)
+    //       navigate('/')
+    //       alert('Something went wrong')
+    //       setError(true)
+    //       setEmpty(false)
+    //     })
+    // } else {
+    //   setEmpty(true)
+    //   setError(false)
+    //   // alert("Please Enter Email and Password");
+    // }
   }
   return (
     <div
