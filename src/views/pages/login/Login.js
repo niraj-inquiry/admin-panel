@@ -30,7 +30,7 @@ const Login = () => {
   const onLogin = async () => {
     try {
       const response = await axios.post(
-        "/v1.0/user/login",
+        "https://gym-api-3r8c.onrender.com/v1.0/user/login",
         {
           email: email,
           password: password,
