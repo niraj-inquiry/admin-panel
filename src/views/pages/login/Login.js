@@ -27,7 +27,7 @@ const Login = () => {
   const [empty, setEmpty] = useState(false)
   const [error, setError] = useState(false)
   const navigate = useNavigate()
-  const onLogin = () => {
+  const onLogin = async () => {
     try {
       const response = await axios.post(
         "/v1.0/user/login",
