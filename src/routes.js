@@ -54,7 +54,7 @@ const Alerts = React.lazy(() => import('./views/notifications/alerts/Alerts'))
 const Badges = React.lazy(() => import('./views/notifications/badges/Badges'))
 const Modals = React.lazy(() => import('./views/notifications/modals/Modals'))
 const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
-
+const CenterManagement=React.lazy(()=>import('./components/CenterManagement'))
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 const ShowUserLists=React.lazy(()=>import('./views/pages/lists/ShowUserLists'))
 const GymList=React.lazy(()=>import('./views/pages/lists/GymList'))
@@ -74,6 +74,7 @@ const routes = [
   {path:'/facilitiesList',name:"facilities list",element:FacilitiesList},
   {path:'/gymdetails',name:"gymdetails",element:Gymdetails},
   {path:'/careerlist',name:"Career list",element:CareerList},
+  {path:'/center-management', name:'Center Management', element:CenterManagement},
   {path:'/contactuslist',name:"Contactus list",element:ContactusList},
   {path:'/roleList',name:"Role list",element:RoleList},
   {path:'/planList',name:"Plan list",element:PlanList},
