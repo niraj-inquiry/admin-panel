@@ -45,7 +45,7 @@ const Login = () => {
       }
       
       if (data.data.email && data.data.password ) {
-        if (data.data.user_type==="admin") {
+        if (data.data.user_type==="Admin") {
           navigate('/dashboard')
           localStorage.setItem('userAuth', JSON.stringify(aData) )
         } else {
